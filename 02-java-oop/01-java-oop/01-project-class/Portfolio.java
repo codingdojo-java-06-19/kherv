@@ -1,7 +1,6 @@
+import java.util.ArrayList;
 
 public class Portfolio {
-	
-	
-	private projects
-
+	//private String projects;
+	ArrayList<Project> projects = new ArrayList<Project>();
 }
