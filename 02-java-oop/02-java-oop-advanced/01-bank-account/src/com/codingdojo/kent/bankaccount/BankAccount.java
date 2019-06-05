@@ -87,23 +87,8 @@ public class BankAccount {
 		// System.out.println(BankAccount.getAccountNumber());
 		
 		
-		
-		
 	} // end main method
 		
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }  // end class
