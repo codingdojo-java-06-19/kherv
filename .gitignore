@@ -24,6 +24,14 @@ testMain
 # Created in vs2017 when using open folder with cmake tools
 CMakeSettings.json
 
+# KH extras
+/bu02-mongoose-dashboard
+/bu02-mongoose-dashboard/
+*.lnk
+*trashme*
+*.docx
+
+
 # generated files etc
 .last_success_revision
 *.d
