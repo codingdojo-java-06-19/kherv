@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class BankAccount {
 	public static String accountNumer;
-	public static double totalMoneyStored;
+	//public static double totalMoneyStored;
 	private static ArrayList<BankAccount> accounts = new ArrayList<BankAccount>(); // multiple account objects
 	public static int numAccounts;
 	public double checkingBalance;
@@ -18,7 +18,7 @@ public class BankAccount {
 		numAccounts++;
 		this.accountNumber = getAccountNumber();
 		System.out.println("New user account created with Account Number:  " + this.accountNumber);
-		accounts.add(this); // everytime we create a bank account, added the account to the array
+		accounts.add(this); // every time we create a bank account, added the account to the array...handy for things like iterating for total money
 	}
 
 	public void deposit(String accountType, double amount) {
