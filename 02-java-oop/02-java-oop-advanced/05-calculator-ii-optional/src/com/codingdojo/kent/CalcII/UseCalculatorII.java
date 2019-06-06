@@ -4,10 +4,10 @@ package com.codingdojo.kent.CalcII;
  */
 
 
-public class UseCalculator implements java.io.Serializable {
+public class UseCalculatorII implements java.io.Serializable {
 
 	public static void main(String[] args) {
-		Calculator firstCalc = new Calculator();
+		CalculatorII firstCalc = new CalculatorII();
 
 		firstCalc.performOperation(10.5);
 

@@ -1,10 +1,15 @@
 package com.codingdojo.kent.CalcII;
 
 /**
+ * Needs more work to convert this calculator to an "order of operations" calculator given a list of operands and operators
  * 
+ * Seems like the solution is to feed the nums and operators into a string or array...then search the array for the first *  or /  then operator using that operator with the preceding and following num...then replace that triplet of num operator num with the result...then repeat until no  or / left
+Then repeat for + and - until the string or array is just one value
+
+Alternate:  instead of replacing contents in the original array, use a second array
  */
 
-public class Calculator {
+public class CalculatorII {
 
 	// private double operandOne;
 	private String operation;
@@ -12,7 +17,7 @@ public class Calculator {
 	private double results;
 	private double theOperand;
 
-	public Calculator() {
+	public CalculatorII() {
 		this.results = 0;
 
 	}
