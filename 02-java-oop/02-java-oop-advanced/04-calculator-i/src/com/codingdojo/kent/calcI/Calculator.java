@@ -31,6 +31,9 @@ public class Calculator {
 		if (this.operation == "+") {
 			this.results = this.operandOne + this.operandTwo;
 		}
+		else if (this.operation == "-") {
+			this.results = this.operandOne - this.operandTwo;
+		}
 	}
 
 	public void getResults() {

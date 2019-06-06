@@ -19,6 +19,12 @@ public class UseCalculator implements java.io.Serializable {
 		firstCalc.performOperation();
 
 		firstCalc.getResults();
+		
+		firstCalc.setOperation("-");
+		
+		firstCalc.performOperation();
+		
+		firstCalc.getResults();
 
 	}
 
