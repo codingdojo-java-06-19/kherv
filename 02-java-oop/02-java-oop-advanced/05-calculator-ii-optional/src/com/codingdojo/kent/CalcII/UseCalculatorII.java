@@ -9,25 +9,28 @@ public class UseCalculatorII implements java.io.Serializable {
 	public static void main(String[] args) {
 		CalculatorII firstCalc = new CalculatorII();
 
-		firstCalc.performOperation(10.5);
+		firstCalc.performOperationII(10.5);
+		
+		firstCalc.performOperationII("+");
+		
+		firstCalc.performOperationII(5.2);
 
-		firstCalc.performOperation("+");
+		firstCalc.performOperationII("*");
 
-		firstCalc.performOperation(5.2);
+		firstCalc.performOperationII(10);
+		
 
-		firstCalc.performOperation("*");
+		firstCalc.performOperationII("=");
+		
 
-		firstCalc.performOperation(10);
 
-		// firstCalc.performOperation("=")
-
-		firstCalc.getResults();
+		// firstCalc.getResults();
 		
 		
 
 
-		firstCalc.getResults();
 
-	}
 
-}
+	} // end main
+
+} // end class

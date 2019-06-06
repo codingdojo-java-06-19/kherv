@@ -11,7 +11,7 @@ public class Calculator {
 	private double results;
 
 	public Calculator() {
-		this.results = -55.2;
+		this.results = 0.0;
 
 	}
 
