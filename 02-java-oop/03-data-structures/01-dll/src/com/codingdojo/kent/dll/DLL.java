@@ -90,47 +90,4 @@ public class DLL {
    }
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-//    popFront() {
-//        Node current =this.tail;
-//        
-//        if (this.head) {
-//            returnVal = this.head.val;
-//            this.head = this.head.next;
-//        }
-//        return returnVal;
-//    }
-//    
-//    if(this.head == null) {
-//        this.head = newNode;
-//        this.tail = newNode;
-//        return;
-//    }
-//    
-//    Node lastNode = this.tail;
-//    lastNode.next = newNode;
-//    newNode.previous = lastNode;
-//    this.tail = newNode;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 } // end class
