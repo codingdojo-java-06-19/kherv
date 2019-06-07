@@ -1,0 +1,6 @@
+parameters:  firstName lastName  favLanguage homeTown
+
+sample string:  http://localhost:8080/SimpleProject/Home?firstName=Kim&lastName=Jones&favLanguage=JavaScript&homeTown=Antarctica
+
+http://localhost:8080/SimpleProject/Home?firstName=Stacy&lastName=Smith&favLanguage=Spanish&homeTown=London
+
