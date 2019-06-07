@@ -24,7 +24,7 @@ public class UseCalculatorII implements java.io.Serializable {
 		
 
 
-		// firstCalc.getResults();
+		firstCalc.getResults();
 		
 		
 

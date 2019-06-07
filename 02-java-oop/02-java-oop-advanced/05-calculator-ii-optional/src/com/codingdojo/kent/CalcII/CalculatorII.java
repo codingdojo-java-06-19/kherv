@@ -36,28 +36,17 @@ public class CalculatorII {
 		//below is temp for dev
 		tempString = Arrays.toString(operandsAndOperators.toArray());
 		String getLast = operandsAndOperators.get(operandsAndOperators.size()-1);
-		String doNothing = ""; //needed to be able to see above in debug mode
+		//String doNothing = ""; //needed to be able to see above in debug mode
 	}
 	
 	public void performOperationII(String inOp) {
-		this.operation = inOp;
-		if (inOp== "+") {
-			System.out.println("Operator received:  " + inOp);
-			operandsAndOperators.add(inOp);
-		} else if (inOp == "-") {
-			System.out.println("Operator received:  " + inOp);
-			operandsAndOperators.add(inOp);
-		} else if (inOp == "*") {
-			System.out.println("Operator received:  " + inOp);
-			operandsAndOperators.add(inOp);
-		} else if (inOp == "/") {
-			System.out.println("Operator received:  " + inOp);
-			operandsAndOperators.add(inOp);
-		} else if (inOp == "=") {
-			System.out.println("Operator received:  " + inOp);
+		if( inOp.equals("=")) {
 			doTheMath();
+			return;
 		}
+		operandsAndOperators.add(inOp);
 	}
+
 	
 	public void doTheMath() {
 		System.out.printf("this doTheMath method will make the calculations\n");
@@ -88,7 +77,7 @@ public class CalculatorII {
 				operandsAndOperators.remove(i);
 				operandsAndOperators.remove(i);// repeat i again because what was i + 1 is now just i
 			}
-		//
+		
 		}
 		System.out.printf("%n%nThe answer is:  %s.", operandsAndOperators.get(0));
 		
