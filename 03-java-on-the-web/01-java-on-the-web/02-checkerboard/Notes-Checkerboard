@@ -1,0 +1,17 @@
+Goal is to create a checkerboard of various numbers of rows and columns.
+
+Each square is a div defined by the css for its class...except for color which is defined inline dynamically based on pararmeters pass in URL.
+
+Logic of color determination:
+---if row# and col# have the same even/odd property, then color1....else color2
+-------That could be accomplished with multiple if or a switch/case, but it turns out that if the sum of two numbers is even, then they both have the same even/odd property, thus
+---------if (row# + col#) is even  then both are same property and thus should be color1
+
+Loop through rows by the height and cols by the width
+
+Enhancements:
+--Handles the cases when user does not enter anything or improper parameters in URL by giving default 2 cols and 2 rows
+
+Future enhancements:
+--Allow user to select colors
+
