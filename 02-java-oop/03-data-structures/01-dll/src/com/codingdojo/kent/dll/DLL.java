@@ -58,6 +58,7 @@ public class DLL {
    public int pop() {
 	   Node current = this.tail;
 	   this.tail = current.previous;
+	   this.tail.next = null; //otherwise it still points to 3
 	   return current.value;
    }
     
@@ -82,7 +83,7 @@ public class DLL {
        
        while(current != null) {
            // print it's value
-           if(current.value == inValue) return true;
+           if(current.value == inValue) {return true;}
            // and move on to it's next node.
            current = current.previous;
        }
