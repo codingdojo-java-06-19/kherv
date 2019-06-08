@@ -1,0 +1,17 @@
+He said he is creating two packages..one for controllers and one for models
+
+He selected to create both under Java Resources/src, but the models automatically put itself under Libraries
+
+but then he refreshed and they were both under src
+
+
+Then added Person.java and ShowPerson.java
+
+He populated Person
+
+And modified default ShowPerson doGet
+
+
+
+
+
