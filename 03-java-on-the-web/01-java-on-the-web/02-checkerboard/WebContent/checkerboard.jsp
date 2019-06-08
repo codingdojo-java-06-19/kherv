@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles.css" />
 <body>
 <p>Create checkerboard by using URL such as:  http://localhost:8080/Checkerboard/checkerboard.jsp?width=7&#38;height=7</p>
+<p>Default values are 2</p>
 
 <% String rowsString = (request.getParameter("height"));
 String colsString = request.getParameter("width");
