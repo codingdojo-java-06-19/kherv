@@ -1,0 +1,5 @@
+use this URL to run it:  http://localhost:8080/pets/Home
+
+Mostly used the Setup from the immediately previous demonstraton on platform
+
+Enhancements would include allowing it to start from /pets and adding some back buttons
