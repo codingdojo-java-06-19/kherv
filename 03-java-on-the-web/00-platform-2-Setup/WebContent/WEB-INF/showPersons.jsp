@@ -8,7 +8,8 @@
 <meta charset="ISO-8859-1">
 <title>Show Person page</title>
 </head>
-<body>
+
+<h1>Greet me</h1>
 
 	<!-- removed this when added JSTL perc Person person = (Person) request.getAttribute("person"); perc> -->
 	<h1><c:out value="${person.greeting()}"/></h1> <!-- modified to c:out after JSTL was person.greeting()-->
