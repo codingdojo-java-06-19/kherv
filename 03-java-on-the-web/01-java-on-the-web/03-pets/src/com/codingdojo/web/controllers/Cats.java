@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.codingdojo.web.models.Cat;
+
 /**
  * Servlet implementation class Cats
  */
@@ -28,7 +30,14 @@ public class Cats extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String name = request.getParameter("name");
+		String breed = request.getParameter("breed");
+		int weight = Integer.parseInt(request.getParameter("weight"));
+		
+		Cat cat = new Cat(name, breed, weight);
+		
+		request.setAttribute("cat", cat);
+		request.getRequestDispatcher("/WEB-INF/view/cat.jsp").forward(request, response);
 	}
 
 	/**

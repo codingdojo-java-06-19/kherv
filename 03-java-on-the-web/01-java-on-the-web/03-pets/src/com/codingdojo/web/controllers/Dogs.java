@@ -45,16 +45,9 @@ public class Dogs extends HttpServlet {
 		
 		//response.getWriter().append("Served att: ").append(request.getContextPath());
 		request.getRequestDispatcher("/WEB-INF/view/dog.jsp").forward(request, response);
-		
+ 		//RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/view/dog.jsp");
 		//view.forward(request, response);
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 
 	/**

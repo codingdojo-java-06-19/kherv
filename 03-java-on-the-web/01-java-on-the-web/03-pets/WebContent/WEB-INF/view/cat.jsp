@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Cat Restults Here</title>
+<title>Cat Results Here</title>
 </head>
 <body>
 
+<h1>Displaying Cat Information</h1>
 
+	<h2><c:out value="${cat.showAffection()}"/></h2>
 
 
 </body>
