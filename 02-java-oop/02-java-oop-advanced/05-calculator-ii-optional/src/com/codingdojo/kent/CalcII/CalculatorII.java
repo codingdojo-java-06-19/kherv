@@ -12,12 +12,7 @@ public class CalculatorII {
 	
 	private static ArrayList<String> operandsAndOperators = new ArrayList<String>(); //Populated by user's input
 	
-
-	// private double operandOne;
-	private String operation;
-	// private double operandTwo;
 	private double results;
-	private double theOperand;
 	private static String tempString;
 
 	public CalculatorII() {
