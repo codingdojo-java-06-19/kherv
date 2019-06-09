@@ -6,7 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Make Pet Page</title>
+	<link rel="stylesheet" href="../../styles.css"/>
+
 </head>
+
+
+
+
 <body>
 <h1>Let's create a pet...Dog or Cat only...no snakes here</h1>
 
