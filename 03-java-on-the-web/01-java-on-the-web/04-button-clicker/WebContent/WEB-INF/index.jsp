@@ -10,6 +10,15 @@
 <body>
 <h1>This is the Clicker Page...or the Click It page</h1>
 
+<form action = "/ButtonClicker/Counter" method="POST">
+	<input type = "submit" value="Click Me!">
+</form>
+
+<p>You have clicked this button <c:out value="${sessionScope.numSess2}"/> times</p>
+		<h1>Also works<c:out value="${sessionScope.numSess2}"/> times.</h1>
+
+
+
 
 
 </body>
