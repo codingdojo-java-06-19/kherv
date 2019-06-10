@@ -1,0 +1,80 @@
+h1 {
+	
+	color: red;
+}
+
+    
+.box {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0;
+}
+
+    
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+}
+
+.container{
+	margin:20px;
+	padding:20px;
+	text-align:center;
+}
+
+h1{
+	font-size:1.5em;
+	font-weight:lighter;
+	margin-bottom:20px;
+}
+
+p{
+	margin-bottom: 10px;
+}
+
+.entry {
+	border:2px solid black;
+	padding:5px;
+	font-size:1em;
+	width:30px;
+}
+
+ .guess{
+ 	border:2px solid black;
+	padding:5px;
+	font-size:1em;
+	width:75px;
+}
+
+input[type=submit]{
+	border: 2px solid black;
+	box-shadow:2px 3px;
+	padding:5px;
+	background-color:white;
+	display:block;
+	margin:5px auto 10px auto;
+}
+
+.alert{
+	border:2px solid black;
+	width:100px;
+	height:100px;
+	padding:20px;
+	margin:20px auto 20px auto;
+	color:white;
+	font-weight: bold;
+	font-size:1em;
+}
+
+.red {
+	background-color:red;
+	line-height:100px;
+}
+
+.green {
+	background-color: lightgreen;
+}
+

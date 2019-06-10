@@ -1,0 +1,36 @@
+	
+		if(request.getParameter("inputNumber")==null) {
+			System.out.println("no guesses, yet");
+			session.setAttribute("didGuess", "no");
+		}
+		
+		
+		if(request.getParameter("inputNumber")!=null) {
+			session.setAttribute("didGuess", "yes");
+			
+			int inputNumberInt = Integer.parseInt(request.getParameter("inputNumber"));
+			System.out.printf("This is the number you input...as an int %d%n", inputNumberInt);
+			System.out.println("The didGuess is:  " + session.getAttribute("didGuess"));
+			
+			int targetNumberInt = (int)session.getAttribute("targetNumber");
+	
+			
+			if(inputNumberInt == targetNumberInt) {
+				System.out.printf("Your guess was correct, %d%n", inputNumberInt);
+				session.setAttribute("guessResult", "0");
+			}
+			else if (inputNumberInt < targetNumberInt) {
+				System.out.printf("Target Number is  %d  ",targetNumberInt);
+				System.out.printf("Your guess %d was too low, %n", inputNumberInt);
+				session.setAttribute("guessResult", "-1");
+			}
+			else {
+				System.out.printf("Target Number is  %d  ",targetNumberInt);
+				System.out.printf("Your guess %d was too High, %n", inputNumberInt);
+				session.setAttribute("guessResult", "1");
+			}
+		}
+
+		
+		
+		doGet(request, response);
