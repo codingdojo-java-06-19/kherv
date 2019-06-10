@@ -53,6 +53,10 @@ public class Number extends HttpServlet {
 		
 		
 		session.setAttribute("targetNumber", targetNumber);
+		request.setAttribute("targetNumberR", targetNumber);
+		
+		String guessResultS = (String)session.getAttribute("guessResult");
+		request.setAttribute("guessResultR", guessResultS);
 		
 		//System.out.printf("Target Number is:  %d%n, (int)session.getAttribute('targetNumber')");
 		
@@ -100,10 +104,6 @@ public class Number extends HttpServlet {
 			System.out.printf("Your guess %d was too High, %n", guessInt);
 			session.setAttribute("guessResult", "1");
 		}
-		
-		
-		
-		
 		
 		response.sendRedirect(redirectLocation);
 		

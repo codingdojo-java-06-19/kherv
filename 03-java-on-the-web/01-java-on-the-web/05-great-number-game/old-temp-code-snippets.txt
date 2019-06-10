@@ -34,3 +34,18 @@
 		
 		
 		doGet(request, response);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+					<%
+				session.setAttribute("didGuess", "no");
+			%>
