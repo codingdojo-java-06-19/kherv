@@ -1,0 +1,28 @@
+@charset "ISO-8859-1";
+
+
+
+body {
+    background-color: pink;
+}
+
+
+.normal-link{
+	background:none;
+     color: blue;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     text-decoration: underline;
+     cursor: pointer;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+  }
+
+  .short-form{
+	display:inline-block;
+}
+
