@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h2>"You have visited http://your_server " <c:out value="${numtimes}"/> times.</h2>
+<h2>You have visited http://your_server  <c:out value="${numTimes}"/> times.</h2>
 
 <h3><a href="/your_server">Test another visit?</a></h3>     
 

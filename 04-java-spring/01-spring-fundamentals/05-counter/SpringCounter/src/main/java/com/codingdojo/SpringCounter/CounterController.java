@@ -1,46 +1,43 @@
 package com.codingdojo.SpringCounter;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 @Controller
+@RequestMapping("/your_server")
 public class CounterController {
 	Date curDate = new Date();
 	//SimpleDateFormat format;
 	//String DateToStr = format.format(curDate);
 	
-	@RequestMapping("/") //dashboard page
-	public String index(Model model) {
-		String tested ="Dashboard Page";
-		model.addAttribute("tester", tested);
-		return "index.jsp";
+	@RequestMapping("") //dashboard page
+	public String index(HttpSession session, Model model) {
+		if (session.getAttribute("numTimes") == null) {
+			session.setAttribute("numTimes", 0);
+		}
+		//do the counter stuff here
+		Integer numCount =(Integer) session.getAttribute("numTimes");
+		numCount++;
+		
+		session.setAttribute("numTimes", numCount);
+		return "welcome.jsp";
 	}
   
-	@RequestMapping("/date") //date route to render date
-	public String date(Model model) {
-		SimpleDateFormat format = new SimpleDateFormat("E, dd MMM yyyy ");
-        String DateToStr = format.format(curDate);
-		model.addAttribute("dateOut", DateToStr);
-		return "date.jsp";
+	@RequestMapping("/counter") //date route to render date
+	public String date(HttpSession session, Model model) {
+		Integer numCount =(Integer) session.getAttribute("numTimes");
+		if (session.getAttribute("numTimes") == null) {
+			session.setAttribute("numTimes", 0);
+		}	
+		//int testNum = -22;
+		return "current.jsp";
 	}
 	
-	@RequestMapping("/time") //time route to render time
-	public String time(Model model) {
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss z");
-        String DateToStr = format.format(curDate);
-		model.addAttribute("timeOut", DateToStr);
-		return "time.jsp";
-	}
-	
-	
-    
-    
 }  // end class
 
 

@@ -10,5 +10,9 @@
 <body>
 <h1>Welcome User!</h1>
 
+<c:out value="${numTimes}"/>
+
+<h3><a href="/your_server/counter">Go to the other page...for fun</a></h3>     
+
 </body>
 </html>
