@@ -58,8 +58,8 @@ public class Roster {
 	}
 	
 	public void removePlayerFromTeam(int teamId, int playerId) {
-		Team team = getOneTeam(teamId);
-		team.removePlayer(playerId);
+		getOneTeam(teamId).removePlayer(playerId);
+
 	}
 	
 	
