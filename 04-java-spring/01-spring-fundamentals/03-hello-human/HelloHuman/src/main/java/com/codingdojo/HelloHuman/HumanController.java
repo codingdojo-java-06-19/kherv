@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HumanController {
 	String secondLine= "<p>Welcome to SpringBoot</p>";
     @RequestMapping("/") //this makes it a root route:  "/"
-    //public String greet(@RequestParam(value="first", required=false) String firstInput, @RequestParam(value="last", required=false) String lastInput )
+    //sample strings that work:  http://localhost:8089/?q=Fred&q2=Jones; http://localhost:8089/ and this gives same as second:  http://localhost:8089/?q=Fred
     public String query(@RequestParam(value="q", required=false) String searchQuery, @RequestParam(value="q2", required=false) String lName) {
     	if(searchQuery == null || lName == null) {
     		return "<h2>Hello Human!</h2>" + secondLine;
