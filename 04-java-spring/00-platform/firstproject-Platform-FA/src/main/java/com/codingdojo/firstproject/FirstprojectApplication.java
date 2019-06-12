@@ -16,7 +16,7 @@ public class FirstprojectApplication {
         @RequestMapping("/")
         // 3. Method that maps to the request route above
         public String hello() { // 3
-                return "Hello World!..Java is geat";
+                return "Hello World!..Java is geat"; 
                       
         }
         
