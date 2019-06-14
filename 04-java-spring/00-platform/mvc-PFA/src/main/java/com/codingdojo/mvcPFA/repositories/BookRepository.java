@@ -11,7 +11,7 @@ import com.codingdojo.mvcPFA.models.Book;
 
 
 @Repository
-public interface BookRepository extends CrudRepository<Book, Long>{
+public interface BookRepository extends CrudRepository<Book, Long>{ //Note that Book is the name of the model...or the model class
 	List<Book> findAll();
 	List<Book> findByDescriptionContaining(String search);
 	

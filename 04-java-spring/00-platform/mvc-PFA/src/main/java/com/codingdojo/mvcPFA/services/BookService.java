@@ -10,7 +10,7 @@ import com.codingdojo.mvcPFA.repositories.BookRepository;
 
 @Service
 public class BookService {
-	private final BookRepository bookRepository;
+	private final BookRepository bookRepository; // bookRepository will call all the methods we have such as findAll
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -43,7 +43,7 @@ public class BookService {
 		return null;
 	}
     
-    
+    //update
 	public Book updateBook(Long id, String title, String desc, String lang, Integer pages) {
 		Book book = findById(id);
 		

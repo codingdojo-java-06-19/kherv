@@ -1,5 +1,5 @@
 package com.codingdojo.Languages.controllers;
 
-public class Languages {
+public class LanguagesController {
 
 }
