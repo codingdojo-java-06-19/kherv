@@ -1,5 +1,4 @@
 package com.codingdojo.mvcPFA.models;
-
 import java.util.Date;
 
 import javax.persistence.Column;

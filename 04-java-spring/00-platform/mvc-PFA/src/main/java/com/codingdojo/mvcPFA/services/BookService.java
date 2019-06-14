@@ -32,4 +32,39 @@ public class BookService {
             return null;
         }
     }
-}
+    
+	public Book findById(Long id) {
+		Optional<Book> book = bookRepository.findById(id);
+		
+		if (book.isPresent()) {
+			return book.get();
+		}
+		
+		return null;
+	}
+    
+    
+	public Book updateBook(Long id, String title, String desc, String lang, Integer pages) {
+		Book book = findById(id);
+		
+		book.setNumberOfPages(pages);
+		book.setTitle(title);
+		
+		return updateBook(book);
+	}
+	
+	public Book updateBook(Book book) {
+		return bookRepository.save(book);
+	}
+	
+	public void deleteBook(Long id) {
+		bookRepository.deleteById(id);
+	}
+    
+    
+    
+    
+    
+    
+    
+} // end of class
