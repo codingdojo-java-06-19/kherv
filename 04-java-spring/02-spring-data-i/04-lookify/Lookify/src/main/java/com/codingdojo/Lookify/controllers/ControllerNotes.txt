@@ -1,0 +1,39 @@
+	//The routes we need:
+	
+	//In SongsController
+	
+	//wireframe that says / has just a link
+	//	route /  yields a page with nothing but a link..its method will be called dashboard and will take us to home.jsp
+	
+	//wireframe that says /dashboard....NOTE:  this should be /songs  but it is not
+	//  route /dashboard GET  yields a page that lists up all songs....
+	
+	//wireframe that says /songs/new
+	//  route /songs/new yields a page that allows us to create a new song....its method will be called newSong..and will take us to new.jsp
+	
+	//   the new.jsp is going to POST to another route to process info and create the new song....thus
+	//  route /songs POST  does that and then if successful redirects to /songs GET...if unsuccessful sends us back to new.jsp to try again
+	
+	//wireframe that says /songs/2
+	//  route /songs/2 yields a page that shows details....its method will be called show...and will take us to a show.jsp
+	
+	//wireframes have links that say delete
+	//DELETING  no route specified...but songs/2 method DELETE yields no page...but needs a method that will be called destroy...will redirect us to the route that takes us to index.jsp which is.....
+	
+	
+	//In SearchController
+	//wireframe that says /search/Sheeran
+	// route /search/{artistName} yields a page (search.jsp) that shows result of search...remember the wireframe shows the  GET route that got us here, so we need another POST route that processes
+	
+	// route forms on both index.jsp and search.jsp do POSTs   Can we really rend the POST route to the search.jsp directly?  without even checking for errors?
+	
+	//wireframe that says /search/topten
+	// route /search/topten ..I suppose POST ?  yields a page that shows the top ten songs:  topten.jsp
+	
+	
+	
+	
+	
+	
+	
+	
