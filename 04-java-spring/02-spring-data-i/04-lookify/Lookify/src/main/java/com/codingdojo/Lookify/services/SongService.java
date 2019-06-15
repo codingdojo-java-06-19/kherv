@@ -3,9 +3,12 @@ package com.codingdojo.Lookify.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.codingdojo.Lookify.models.Song;
 import com.codingdojo.Lookify.repositories.SongRepository;
 
+@Service
 public class SongService {
 	private final SongRepository songRepository;
 	
@@ -44,10 +47,10 @@ public class SongService {
 		songRepository.delete(song);
 	}
 	
-//	//find top 10
-//	public List<Song> topTen() {
-//		return songRepository.findTop10ByRatingDesc();
-//	}
+	//find top 10
+	public List<Song> findTopTen() {
+		return songRepository.findTop10ByOrderByRatingDesc();
+	}
 	
 	//find by search string, Artist:
 	public List<Song> findArtist(String search) {

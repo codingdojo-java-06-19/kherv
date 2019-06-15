@@ -17,17 +17,17 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "languages")
+@Table(name = "songs")
 public class Song {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Size(min=5)
+	@Size(min=5, max =50)
 	private String title;
-	@Size(min=5)
+	@Size(min=5, max =50)
 	private String artist;
 	@Max(10)
-	@Min(10)
+	@Min(1)
 	private int rating;
 	// This will not allow the createdAt column to be updated after creation
 	@Column(updatable = false)

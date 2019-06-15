@@ -9,6 +9,6 @@ import com.codingdojo.Lookify.models.Song;
 public interface SongRepository extends CrudRepository<Song, Long>{ // <>contains the class of the model file, long is type of its ID
 	List<Song> findAll();
 	List<Song> findByArtistContaining(String search);
-//	List<Song> findTop10ByRatingDesc();
+	List<Song> findTop10ByOrderByRatingDesc();
 
 }

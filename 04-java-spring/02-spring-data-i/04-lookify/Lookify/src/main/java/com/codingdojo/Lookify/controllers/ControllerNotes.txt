@@ -1,3 +1,7 @@
+	//CRUD routes order: 
+	show all...Make new one....Show one.....Update One....Delete One
+	
+	
 	//The routes we need:
 	
 	//In SongsController
@@ -14,7 +18,7 @@
 	//   the new.jsp is going to POST to another route to process info and create the new song....thus
 	//  route /songs POST  does that and then if successful redirects to /songs GET...if unsuccessful sends us back to new.jsp to try again
 	
-	//wireframe that says /songs/2
+	//wireframe that says /songs/2 
 	//  route /songs/2 yields a page that shows details....its method will be called show...and will take us to a show.jsp
 	
 	//wireframes have links that say delete
