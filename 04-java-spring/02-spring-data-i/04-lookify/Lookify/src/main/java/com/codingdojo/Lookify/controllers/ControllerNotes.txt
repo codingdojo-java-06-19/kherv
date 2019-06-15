@@ -3,10 +3,10 @@
 	//In SongsController
 	
 	//wireframe that says / has just a link
-	//	route /  yields a page with nothing but a link..its method will be called dashboard and will take us to home.jsp
+	//	route /  yields a page with nothing but a link..its method will be called splash and will take us to home.jsp
 	
 	//wireframe that says /dashboard....NOTE:  this should be /songs  but it is not
-	//  route /dashboard GET  yields a page that lists up all songs....
+	//  route /dashboard GET  yields a page that lists up all songs....index.jsp
 	
 	//wireframe that says /songs/new
 	//  route /songs/new yields a page that allows us to create a new song....its method will be called newSong..and will take us to new.jsp
@@ -32,7 +32,7 @@
 	
 	
 	
-	
+	 
 	
 	
 	
