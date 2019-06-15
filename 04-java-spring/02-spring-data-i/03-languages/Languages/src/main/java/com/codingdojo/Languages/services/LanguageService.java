@@ -38,7 +38,7 @@ public class LanguageService {
 	}
 	
 	//find one language by id
-	public Language findbyId(Long id) {
+	public Language findLang(Long id) {
 		Optional<Language> language = languageRepository.findById(id);
 		if (language.isPresent()) {
 			return language.get();
@@ -48,7 +48,7 @@ public class LanguageService {
 	
 	//update
 	public Language updateLanguage(Long id, String langName, String creator, String version) { //include types and field names in param list
-		Language language = findbyId(id);
+		Language language = findLang(id);
 		
 		language.setCreator(creator);
 		language.setLangName(langName);
@@ -56,14 +56,15 @@ public class LanguageService {
 		return updatedLanguage(language);
 	}
 	
-	private Language updatedLanguage(Language language) {
+	public Language updatedLanguage(Language language) {
 		// TODO Auto-generated method stub
 		return languageRepository.save(language);
 	}
 
 	//delete
 	public void deleteLanguage(Long id) {
-		languageRepository.deleteById(id);
+		Language language = findLang(id);
+		languageRepository.delete(language);
 	}
 	
 	public LanguageRepository getLanguageRepository() {
