@@ -21,29 +21,29 @@ import com.codingdojo.DojosAndNinjas.services.NinjaService;
 public class NinjaController {
 	private final NinjaService ninjaService;
 	private final DojoService dojoService;
-	
+
 	public NinjaController(NinjaService ninjaService, DojoService dojoService) {
 		this.ninjaService = ninjaService;
 		this.dojoService = dojoService;
 	}
-	
+
 	@RequestMapping("/new")
 	public String newNinja(@ModelAttribute("ninjas") Ninja ninja, Model model) {
 		List<Dojo> dojos = dojoService.findAll();
 		model.addAttribute("dojoList", dojos);
 		return "newNinja.jsp";
 	}
-	
-	@RequestMapping(value="/new", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String addNinja(@Valid @ModelAttribute("ninja") Ninja ninja, BindingResult result) {
-		if(result.hasErrors()) {
-			System.out.println("Error! "+result);
+		if (result.hasErrors()) {
+			System.out.println("Error! " + result);
 			return "newNinja.jsp";
-		}
-		else {
+		} else {
 			ninjaService.addNinja(ninja);
-			//If successful, redirect to the page that shows all of the ninjas at that particular dojo
-			return "redirect:/dojos/"+ninja.getDojo().getId();
+			// If successful, redirect to the page that shows all of the ninjas at that
+			// particular dojo
+			return "redirect:/dojos/" + ninja.getDojo().getId();
 		}
 	}
 } // end ninja controller class
