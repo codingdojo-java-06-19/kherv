@@ -9,6 +9,6 @@ public class HomeController {
 	public String index() {
 		System.out.println("above");
 //		return "redirect:/";
-		return "WEB-INF/index.jsp";
+		return "index.jsp";
 	}
 }

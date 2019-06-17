@@ -26,14 +26,14 @@ public class PersonController {
 	@RequestMapping("/new")
 	public String newPerson(@ModelAttribute("person") Person person) {
 		System.out.println("heretoo");
-		return "/WEB-INF/newPerson.jsp";
+		return "newPerson.jsp";
 	}
 	
 	@RequestMapping(value="/new", method=RequestMethod.POST) 
 	public String create(@Valid @ModelAttribute("person") Person person, BindingResult result) {
 		System.out.println("here below");
 		if (result.hasErrors()) {
-			return "/WEB-INF/newperson.jsp";
+			return "newperson.jsp";
 		}
 		personService.createPerson(person);
 			return "redirect:/persons/new";
@@ -47,7 +47,7 @@ public class PersonController {
 	    	}
 	    	else {
 		    	model.addAttribute("person", person);
-		    	return "/WEB-INF/show.jsp";
+		    	return "show.jsp";
 	    	}
 	    }
 	
