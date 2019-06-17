@@ -30,7 +30,7 @@ public class NinjaController {
 	@RequestMapping("/new")
 	public String newNinja(@ModelAttribute("ninjas") Ninja ninja, Model model) {
 		List<Dojo> dojos = dojoService.findAll();
-		model.addAttribute("dojos", dojos);
+		model.addAttribute("dojoList", dojos);
 		return "newNinja.jsp";
 	}
 	

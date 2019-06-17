@@ -11,25 +11,26 @@
 <title>New Ninjas Page</title>
 </head>
 <body>
-			<h1>New Ninjas</h1>
+			<h1>New Ninjasss--the real D&J port 8080</h1>
 
 <form:form action="/ninjas/new" method="post" modelAttribute="ninjas">
 
 				<div class="row">
-				<div class="col-25">
-					<label for="dojo">Dojo:</label>
-				</div>
-				<div class="col-75">
-					<select name="dojo" path="dojo">
-						<c:forEach items="${dojos}" var="dojo">
-							<option value="<c:out value="${dojo.id}"/>"><c:out value="${dojo.name}"/></option>
-						</c:forEach>
-					</select>
-				</div>
+					<div class="col-25">
+						<label for="dojo">Dojo:</label>
+					</div>
 
+
+					<div class="col-75">
+						<form:select path="dojo">
+		
+							<form:option value="NONE" label="--- Select ---"/>
+							<form:options items="${dojoList}" itemLabel="name" itemValue="id" />
+		
+						</form:select>
+					</div>
 				
 				</div>
-				
 				<div>
 					<form:label path="firstName">First Name</form:label>
 					<form:errors path="firstName"/>
