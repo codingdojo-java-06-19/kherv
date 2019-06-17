@@ -8,10 +8,10 @@
 <head>
 <meta charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
-<title>New Ninjas Page</title>
+<title>New 22Ninjas Page</title>
 </head>
 <body>
-			<h1>New Ninjas</h1>
+			<h1>New Ninjass</h1>
 
 <form:form action="/ninjas/new" method="post" modelAttribute="ninjas">
 
@@ -20,13 +20,17 @@
 					<label for="dojo">Dojo:</label>
 				</div>
 				<div class="col-75">
-					<select name="dojo" path="dojo">
-						<c:forEach items="${dojos}" var="dojo">
-							<option value="<c:out value="${dojo.id}"/>"><c:out value="${dojo.name}"/></option>
-						</c:forEach>
-					</select>
+					<form:select path="dojo">
+
+							<form:options items="${dojoList}"/>
+
+					</form:select>
 				</div>
 
+				
+				
+				
+				
 				
 				</div>
 				
