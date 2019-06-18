@@ -12,10 +12,11 @@
 <body>
 	<body>
 		<div class="container">
-			<h1>Here goes Product Name:<c:out value="${product1.name}"/></h1>
+			<h1>Product Name:<c:out value="${product1.name}"/></h1>
 		
 			<div class="CatListAndAddCat">
 				<div class="CatList">
+					<p>Categories this product is in:</p>
 					<ul>
 						<!--< c forrEach items="${ ninjas }" var="ninja">  Here ninja is the var to use in c:out, but ninjas is the list key from controller -->
 						<c:forEach items="${categoriesHave}" var="category"> 
@@ -32,7 +33,7 @@
 					<form:form action="/products/category" method="POST" modelAttribute="category" autocomplete="off">
 						<div class="row">
 							<div class="col-25">
-								<label for="category">Add Category:</label>
+								<label for="category">Add Category to this product:</label>
 							</div>
 							<div class="col-75">
 								<select name="category">

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.ProductsAndCategories.models.Category;
+import com.codingdojo.ProductsAndCategories.models.Product;
 import com.codingdojo.ProductsAndCategories.repositories.CategoryRepository;
 
 @Service
@@ -30,8 +31,15 @@ public class CategoryService {
 		
 	}
 	
+	//Retrieve all Categories That Are Already Added To This Product
+	public List<Category> findCategoriesWithThisProduct(Product product){
+		return categoryRepository.findByProductsContains(product);
+	}
 	
-	
+	//Retrieve all Categories That Aren't Already Added To This Product
+	public List<Category> findCategoriesWithoutThisProduct(Product product){
+		return categoryRepository.findByProductsNotContains(product);
+	}
 	
 	
 } // end CategoryService class

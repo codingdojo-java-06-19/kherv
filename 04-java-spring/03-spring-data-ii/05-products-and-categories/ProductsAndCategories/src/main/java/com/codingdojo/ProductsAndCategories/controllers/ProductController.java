@@ -54,16 +54,19 @@ public class ProductController {
 	public String showProduct(@PathVariable("id") Long id, Model model) {
 		Product product1 = productService.findOne(id);
 		model.addAttribute("product1", product1);
-		List<Product> products = productService.findAll();  //this is unused, now...don't need any products list...probably
-		model.addAttribute("products", products);
-		List<Category> categoriesNot = categoryService.findAll();  //this needs to change to just get the categories that this product has, AND make one that is just categories that this product down NOT have
+		//List<Product> products = productService.findAll();  //this is unused, now...don't need any products list...probably
+		//model.addAttribute("products", products);
+		List<Category> categoriesNot = categoryService.findAll();  //this needs to change to just categories that this product down NOT have
+		//List<Category> categoriesNot = categoryService.findCategoriesWithoutThisProduct(product1);  //this needs to change to just categories that this product down NOT have
+		//List<Category> categoriesHave = categoryService.findCategoriesWithThisProduct(product1);;  //this needs to change to just get the categories that this product has
+		List<Category> categoriesHave = categoryService.findAll();  //this needs to change to just get the categories that this product has
 		model.addAttribute("categoriesNotYetAdded", categoriesNot);
 		
-		model.addAttribute("categoriesHave", categoriesNot);
+		model.addAttribute("categoriesHave", categoriesHave);
 		return "showProduct.jsp";
 		
 	}
-	@RequestMapping(value="category", method = RequestMethod.POST)
+	@RequestMapping(value="/addCategory/{id}", method = RequestMethod.POST)
 	public String addCategoryToProduct(@RequestParam("category_id") Long category_id, @RequestParam("product1_id") Long product_id, Model model) {
 		//find product   find category associated with that id
 //		Product product1 = productService.findOne(product_id);
