@@ -18,7 +18,7 @@
 				<div class="CatList">
 					<p>Categories this product is in:</p>
 					<ul>
-						<!--< c forrEach items="${ ninjas }" var="ninja">  Here ninja is the var to use in c:out, but ninjas is the list key from controller -->
+
 						<c:forEach items="${categoriesHave}" var="category"> 
 							<li>
 								<c:out value="${category.name}"/>
@@ -30,7 +30,7 @@
 
 				<div class ="AddCat">
 
-					<form:form action="/products/category" method="POST" modelAttribute="category" autocomplete="off">
+					<form:form action="/products/addCategory/${product1.id}" method="POST" modelAttribute="category">
 						<div class="row">
 							<div class="col-25">
 								<label for="category">Add Category to this product:</label>
@@ -44,16 +44,14 @@
 							</div>
 						</div>
 						<div class="row">
-							<input type="hidden" value="product1.id"/>
 							<input type="submit" value="Add"/>
 						</div>
 					</form:form>
-				
-				
-				
+				</div> <!-- End AddCat -->
+
 			</div> <!-- end CatListAndAddCat -->
 
-		</div>
+		</div> <!-- End Container -->
 	</body>
 
 

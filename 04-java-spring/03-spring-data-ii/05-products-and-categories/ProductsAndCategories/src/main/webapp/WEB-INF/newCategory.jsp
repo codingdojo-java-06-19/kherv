@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
-<title>New Dojo Page</title>
+<title>New Category Page</title>
 </head>
 <body>
 			<h1>New Category</h1>
