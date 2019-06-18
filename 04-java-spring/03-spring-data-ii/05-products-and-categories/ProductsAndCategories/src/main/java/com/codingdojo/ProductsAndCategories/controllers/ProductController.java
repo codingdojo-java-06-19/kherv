@@ -1,23 +1,32 @@
 package com.codingdojo.ProductsAndCategories.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.codingdojo.ProductsAndCategories.models.Category;
 import com.codingdojo.ProductsAndCategories.models.Product;
 import com.codingdojo.ProductsAndCategories.services.ProductService;
+import com.codingdojo.ProductsAndCategories.services.CategoryService;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 	private final ProductService productService;
+	private final CategoryService categoryService;
 	
-	public ProductController(ProductService productService) {
+	public ProductController(ProductService productService, CategoryService categoryService) {
 		this.productService = productService;
+		this.categoryService = categoryService;
 	}
 	
 	// create new product
@@ -34,10 +43,36 @@ public class ProductController {
 		}
 		else {
 			productService.create(product);
-			return "redirect:/products/new";
+			return "redirect:/products/new"; //>>>>>>>>>change this to redirect to the products/{id} page for this product
 		}
 	}
 	
+	// Display a product...list of categories it already has...and add allow adding of category to products
+	
+	// First render product page
+	@RequestMapping("/{id}") // id is coming in is of a product..the one whose categories will be listed and to which another category can be added
+	public String showProduct(@PathVariable("id") Long id, Model model) {
+		Product product1 = productService.findOne(id);
+		model.addAttribute("product1", product1);
+		List<Product> products = productService.findAll();  //this is unused, now...don't need any products list...probably
+		model.addAttribute("products", products);
+		List<Category> categoriesNot = categoryService.findAll();  //this needs to change to just get the categories that this product has, AND make one that is just categories that this product down NOT have
+		model.addAttribute("categoriesNotYetAdded", categoriesNot);
+		
+		model.addAttribute("categoriesHave", categoriesNot);
+		return "showProduct.jsp";
+		
+	}
+	@RequestMapping(value="category", method = RequestMethod.POST)
+	public String addCategoryToProduct(@RequestParam("category_id") Long category_id, @RequestParam("product1_id") Long product_id, Model model) {
+		//find product   find category associated with that id
+//		Product product1 = productService.findOne(product_id);
+//		Category category = categoryService.findOne(category_id);
+		productService.addCategoryToProduct(product_id, category_id);
+		
+		return "redirect:/products/"+product_id;
+		
+	}
 	
 	
 	

@@ -138,7 +138,9 @@ public class Product {
 		this.categories = categories;
 	}
 
-
+	public void addCategory(Category category) {
+		this.categories.add(category);
+	}
 
 
 	@PrePersist
