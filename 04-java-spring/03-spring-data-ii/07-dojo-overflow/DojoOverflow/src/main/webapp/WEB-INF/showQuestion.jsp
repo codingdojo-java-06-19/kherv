@@ -6,29 +6,39 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
 <title>Question Profile</title>
 </head>
 <body>
 	<body>
 		<div class="container">
-			<h1>The Question itself will display Here</h1>
-			<h2>The Tags will display here</h2>
+				<h1>The Question itself will display Here</h1>
+				<h2>The Tags will display here</h2>
+			
+					<div class="AnswersAndAddAnswer">
+								<div class="AnswerList">
+								<p>The list of answers will display here
+			
+								<p>Categories this product is in:</p>
+								<ul>
+			
+									<c:forEach items="${answerThisQuestion}" var="category"> 
+										<li>
+											<c:out value="${answer.answer}"/>
+										</li>
+					        		</c:forEach>
+								</ul>
+			
+			
+							</div> <!-- end AnswerList -->
+							
+			
+							<div class ="AddAnswer">
+			
+								The form to add another answer will display here
+							</div> <!-- End AddAnswer -->
 		
-			<div class="ProdListAndAddProd">
-				<div class="ProdList">
-					<p>The list of answers will display here
-					
-
-				</div> <!-- end ProdList -->
-				
-
-				<div class ="AddProd">
-
-					The form to add another answer will display here
-				</div> <!-- End AddProd -->
-
-			</div> <!-- end ProdListAndAddProd -->
+					</div> <!-- end AnswersAndAddAnswer -->
 
 		</div> <!-- End Container -->
 	</body>
