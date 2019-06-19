@@ -19,4 +19,17 @@ public class QuestionService {
 	public List<Question> showAllQuestions(){
 		return questionRepository.findAll();
 	}
+	
+	//Create a question
+	public Question createOrUpdateQuestion(Question question) {
+		return questionRepository.save(question);
+	}
+	
+	//retrieve one question by id
+	public Question showOneQuestion(Long id) {
+		return questionRepository.findById(id).orElse(null);
+	}
+	
+	
+	
 }

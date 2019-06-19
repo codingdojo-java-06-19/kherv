@@ -14,6 +14,25 @@
 			<h1>What is your Question?</h1>
 
 			<h2>Form to gather question will be here</h2>
+			<form:form action="/questions" method="post" modelAttribute="questionM">
+			
+				<div>
+					<form:label path="question">Question</form:label>
+					<form:errors path="question"/>
+					<form:input path="question"/>
+				</div>
+				
+				<div>
+					<label >Tags</label>
+					<input type=text name="tagString" />
+				</div>
+				
+				<div class="row">
+					<input type="submit" value="Create"/>
+				</div>
+			
+			
+			</form:form>
 
 </body>
 </html>

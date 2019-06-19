@@ -1,5 +1,6 @@
 package com.codingdojo.DojoOverflow.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,15 +48,30 @@ public class Question {
 		joinColumns = @JoinColumn(name = "question_id"),
     	inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    @Size(max=3)
+    @Size(max=3)  //this is for a particular question
+    
+    //will have list of tags for each question and a list of answers for each question
     private List<Tag> tags;
 
 	public Question() {
-		
+		this.tags=new ArrayList<Tag>();
 	}
 	
 	
-	
+	//loop through to convert list to string
+	public String listToString() {
+		String result ="";
+
+//		for(Tag oneTag: tags) {
+		for(int i=0; i<tags.size();i++) {
+		result +=tags.get(i).getSubject();
+			if(i<tags.size()-1) {
+				result += ", ";
+			}
+			System.out.println(result);
+		}
+		return result;
+	}
 	
 	public Long getId() {
 		return id;
@@ -149,6 +165,13 @@ public class Question {
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
+	}
+
+
+
+
+	public void addTag(Tag tag) {
+		tags.add(tag);
 	}
 	
 	

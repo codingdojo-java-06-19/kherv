@@ -12,8 +12,19 @@
 <body>
 	<body>
 		<div class="container">
-				<h1>The Question itself will display Here</h1>
+				<h1>The Question: ${question1.question}</h1>
+				<div class="tagsDisplay">
 				<h2>The Tags will display here</h2>
+									<ul>
+						<c:forEach items="${thisQuestionsTags}" var="tags"> 
+							<li>
+								<c:out value="${tags.subject}"/>
+							</li>
+		        		</c:forEach>
+					</ul>
+				
+				
+				</div> <!-- end of tagsDisplay -->
 			
 					<div class="AnswersAndAddAnswer">
 								<div class="AnswerList">

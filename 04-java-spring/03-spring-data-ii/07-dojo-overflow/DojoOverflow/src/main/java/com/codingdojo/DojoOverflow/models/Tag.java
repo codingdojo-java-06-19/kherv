@@ -1,6 +1,7 @@
 package com.codingdojo.DojoOverflow.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,8 +34,23 @@ public class Tag {
 		joinColumns = @JoinColumn(name="tag_id"),
 		inverseJoinColumns = @JoinColumn(name = "question_id")
 	)
+	private List<Question> questions;
+	
+	public Tag() {
+		
+	}
 	
 	
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();
@@ -58,7 +74,7 @@ public class Tag {
 	}
 
 	public void setSubject(String subject) {
-		this.subject = subject;
+		this.subject = subject.toLowerCase().trim();
 	}
 
 	public Date getCreatedAt() {

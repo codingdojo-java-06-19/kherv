@@ -34,7 +34,7 @@
 
 		<td><a href="/questions/${question.id}">  ${question.question}  </a></td>
 		
-		<td>tag, tag</td>
+		<td>${question.listToString() }</td>
 
 		</td>
 		</tr>
