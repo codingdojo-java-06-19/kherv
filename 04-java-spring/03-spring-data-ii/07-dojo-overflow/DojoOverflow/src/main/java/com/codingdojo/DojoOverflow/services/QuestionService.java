@@ -1,5 +1,14 @@
 package com.codingdojo.DojoOverflow.services;
 
-public class QuestionService {
+import org.springframework.stereotype.Service;
 
+import com.codingdojo.DojoOverflow.repositories.QuestionRepository;
+
+@Service
+public class QuestionService {
+	private final QuestionRepository questionRepository;
+	
+	public QuestionService(QuestionRepository questionRepository) {
+		this.questionRepository = questionRepository;
+	}
 }
