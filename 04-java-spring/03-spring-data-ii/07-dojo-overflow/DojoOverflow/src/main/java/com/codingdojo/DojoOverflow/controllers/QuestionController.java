@@ -124,14 +124,16 @@ public class QuestionController {
 		answer.setAnswer(answer.getAnswer());
 		answer.setQuestion(thisQuestion);
 		System.out.println("Our answer contains the following content: "+answer.getAnswer());
-		
 		answerService.saveAnswer(answer);
+		
+		System.out.println("Our answer contains the following content: "+answer.getAnswer());
+		
 		answerService.addAnswerToQuestion(question_id, answer);
-//		//...then save that answer.
-//		System.out.println("Our question has the following answers: "+thisQuestion.getAnswers());
-//		
-//		questionService.createOrUpdateQuestion(thisQuestion);
-//		System.out.println("here");
+		//...then save that answer.
+		
+		System.out.println("Our question has the following answers: "+thisQuestion.getAnswers());
+		questionService.createOrUpdateQuestion(thisQuestion);
+		System.out.println("here");
 		
 		return "redirect:/questions";
 	}
