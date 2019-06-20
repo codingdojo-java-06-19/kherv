@@ -1,8 +1,8 @@
 package com.codingdojo.authentication.services;
 
 import java.util.Optional;
-import org.mindrot.jbcrypt.BCrypt;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.authentication.models.User;
