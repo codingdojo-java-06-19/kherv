@@ -3,8 +3,11 @@ package com.codingdojo.DojoOverflow.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +41,8 @@ public class QuestionController {
 	//Dashboard, display all questions
 	@RequestMapping("")
 	public String index( Model model) {
-		List<Question> questions = questionService.showAllQuestions();
-		model.addAttribute("questions", questions);
+		List<Question> questions = questionService.showAllQuestions(); 
+		model.addAttribute("questions", questions); //needed to make questions available on view
 		return "index.jsp";
 	}
 	
@@ -71,69 +74,55 @@ public class QuestionController {
 	//First render page showing question, tags, existing answers, and form for entering new answer
 	@RequestMapping("/{id}")
 	public String showQuestion(@ModelAttribute("answerM") Answer answer, @PathVariable ("id") Long id, Model model) {
+		//the answerM model attribute above automatically adds answer to the model...so the view can use it
+		//answerM must match the post ModelAttribute and also that in the form
+		//pathvariable means getting from url....param is about getting data from the browser..probably form
 		Question question1 = questionService.showOneQuestion(id);
 		if(question1==null) {
 			return "redirect:/questions";
 		}
-		model.addAttribute("question1", question1);
-		
-		
+		model.addAttribute("question1", question1); //addS to model ...which is key value pairs communicating with the view
+			
 		List<Tag> question1Tags = question1.getTags();
 		model.addAttribute("thisQuestionsTags", question1Tags);
 		
 		List<Answer> question1Answers =question1.getAnswers();
-		System.out.println(question1Answers.isEmpty());
-		//List<Answer> emptyAnswers = new ArrayList<Answer>().add("no answers, yet");
-		if(!(question1Answers.isEmpty())) {
-			System.out.println("is not empty");
-			model.addAttribute("thisQuestionsAnswers", question1Answers);
-		}
-		else {
 
-			System.out.println("is  empty");
-			//model.addAttribute("thisQuestionsAnswers", emptyAnswers);
-		}
-		
-		
-		
-//	public String showCategory(@PathVariable ("id") Long id, @ModelAttribute("productCategory") CategoryProduct categoryProduct, Model model) {
-////		Category category1 = categoryService.findOne(id);
-//		model.addAttribute("category1",  category1);
-//		
-//		List<Product> productsHave = productService.findProductsWithThisCategory(category1);
-//		model.addAttribute("productsHave", productsHave);
-//		
-//		List<Product> productsNot = productService.findProductsWithoutThisCategory(category1);
-//		
-//		model.addAttribute("productsNotYetAdded", productsNot);
-		
+			model.addAttribute("thisQuestionsAnswers", question1Answers);
+
 		return "showQuestion.jsp";
 	}
 	
 	//gather post result from new answer and process
 	@RequestMapping(value = "/{id}/answers", method = RequestMethod.POST)
-	public String createAnswer(@ModelAttribute("answerM") Answer answer, @PathVariable("id") Long question_id) {
+	public String createAnswer(@Valid @ModelAttribute("answerM") Answer answer, BindingResult result, @PathVariable("id") Long question_id) {
 		System.out.println("Ready to process new answer post");
-		System.out.println("question number should be"+ question_id);
-		System.out.println("answer should be " + answer.getAnswer());
+		System.out.println("question number should b" + answer.getQuestion()); //answer is not in the database, but question is
+		System.out.println("answer should be " + answer.getAnswer() ); //we already know the answer here because it came in from the form and attached to model attribute
 		//questionService.addAnswerToQuestion(question_id, answer);
-		
-		Question thisQuestion = questionService.showOneQuestion(question_id);
-		
-		//Use the parameters submitted through our form to populate a new Answer with content...
-		answer.setAnswer(answer.getAnswer());
-		answer.setQuestion(thisQuestion);
-		System.out.println("Our answer contains the following content: "+answer.getAnswer());
+		if(result.hasErrors()) {
+			//more needs to happen than just the below rendering because the page needs to know the question and the answers and tags
+			return "showQuestion.jsp";
+		}
+		//don't need to save the question because it has not changed
 		answerService.saveAnswer(answer);
 		
-		System.out.println("Our answer contains the following content: "+answer.getAnswer());
-		
-		answerService.addAnswerToQuestion(question_id, answer);
-		//...then save that answer.
-		
-		System.out.println("Our question has the following answers: "+thisQuestion.getAnswers());
-		questionService.createOrUpdateQuestion(thisQuestion);
-		System.out.println("here");
+//		Question thisQuestion = questionService.showOneQuestion(question_id);
+//		
+//		//Use the parameters submitted through our form to populate a new Answer with content...
+//		answer.setAnswer(answer.getAnswer());
+//		answer.setQuestion(thisQuestion);
+//		System.out.println("Our answer contains the following content: "+answer.getAnswer());
+//		answerService.saveAnswer(answer);
+//		
+//		System.out.println("Our answer contains the following content: "+answer.getAnswer());
+//		
+//		answerService.addAnswerToQuestion(question_id, answer);
+//		//...then save that answer.
+//		
+//		System.out.println("Our question has the following answers: "+thisQuestion.getAnswers());
+//		questionService.createOrUpdateQuestion(thisQuestion);
+//		System.out.println("here");
 		
 		return "redirect:/questions";
 	}

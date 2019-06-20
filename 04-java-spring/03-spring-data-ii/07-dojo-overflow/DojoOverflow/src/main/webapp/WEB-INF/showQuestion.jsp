@@ -48,7 +48,7 @@
 								<p>Add your answer</p>
 
 								<form:form action="/questions/${question1.id}/answers" method="post" modelAttribute="answerM">
-			
+								<form:hidden path="question" value="${question1.id}"/>
 									<div>
 										<form:label path="answer">Answer</form:label>
 										<form:errors path="answer"/>

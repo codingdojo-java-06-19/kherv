@@ -19,6 +19,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Column(unique=true) //added in lecture time
 	private String email;
 	private String password;
 	@Transient
