@@ -154,7 +154,9 @@ public class Question {
 		this.tags = tags;
 	}
 
-
+	public void addAnswer(Answer answer) {
+		answers.add(answer);
+	}
 
 
 	@PrePersist

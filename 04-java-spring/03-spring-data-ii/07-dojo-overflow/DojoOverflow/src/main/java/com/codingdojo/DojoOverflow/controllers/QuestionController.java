@@ -1,5 +1,6 @@
 package com.codingdojo.DojoOverflow.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.codingdojo.DojoOverflow.models.Answer;
 import com.codingdojo.DojoOverflow.models.Question;
 import com.codingdojo.DojoOverflow.models.Tag;
 import com.codingdojo.DojoOverflow.services.AnswerService;
@@ -68,7 +70,7 @@ public class QuestionController {
 	//New Answer Create answer by user input to post
 	//First render page showing question, tags, existing answers, and form for entering new answer
 	@RequestMapping("/{id}")
-	public String showQuestion(@PathVariable ("id") Long id, Model model) {
+	public String showQuestion(@ModelAttribute("answerM") Answer answer, @PathVariable ("id") Long id, Model model) {
 		Question question1 = questionService.showOneQuestion(id);
 		if(question1==null) {
 			return "redirect:/questions";
@@ -78,6 +80,21 @@ public class QuestionController {
 		
 		List<Tag> question1Tags = question1.getTags();
 		model.addAttribute("thisQuestionsTags", question1Tags);
+		
+		List<Answer> question1Answers =question1.getAnswers();
+		System.out.println(question1Answers.isEmpty());
+		//List<Answer> emptyAnswers = new ArrayList<Answer>().add("no answers, yet");
+		if(!(question1Answers.isEmpty())) {
+			System.out.println("is not empty");
+			model.addAttribute("thisQuestionsAnswers", question1Answers);
+		}
+		else {
+
+			System.out.println("is  empty");
+			//model.addAttribute("thisQuestionsAnswers", emptyAnswers);
+		}
+		
+		
 		
 //	public String showCategory(@PathVariable ("id") Long id, @ModelAttribute("productCategory") CategoryProduct categoryProduct, Model model) {
 ////		Category category1 = categoryService.findOne(id);
@@ -95,8 +112,26 @@ public class QuestionController {
 	
 	//gather post result from new answer and process
 	@RequestMapping(value = "/{id}/answers", method = RequestMethod.POST)
-	public String createAnswer() {
+	public String createAnswer(@ModelAttribute("answerM") Answer answer, @PathVariable("id") Long question_id) {
 		System.out.println("Ready to process new answer post");
+		System.out.println("question number should be"+ question_id);
+		System.out.println("answer should be " + answer.getAnswer());
+		//questionService.addAnswerToQuestion(question_id, answer);
+		
+		Question thisQuestion = questionService.showOneQuestion(question_id);
+		
+		//Use the parameters submitted through our form to populate a new Answer with content...
+		answer.setAnswer(answer.getAnswer());
+		answer.setQuestion(thisQuestion);
+		System.out.println("Our answer contains the following content: "+answer.getAnswer());
+		
+		answerService.saveAnswer(answer);
+		answerService.addAnswerToQuestion(question_id, answer);
+//		//...then save that answer.
+//		System.out.println("Our question has the following answers: "+thisQuestion.getAnswers());
+//		
+//		questionService.createOrUpdateQuestion(thisQuestion);
+//		System.out.println("here");
 		
 		return "redirect:/questions";
 	}

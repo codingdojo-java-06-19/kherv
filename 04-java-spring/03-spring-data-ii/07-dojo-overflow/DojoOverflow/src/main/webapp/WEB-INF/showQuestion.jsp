@@ -12,7 +12,7 @@
 <body>
 	<body>
 		<div class="container">
-				<h1>The Question: ${question1.question}</h1>
+				<h1>The Question: ${question1.question}  ${question1.id}</h1>
 				<div class="tagsDisplay">
 				<h2>The Tags will display here</h2>
 									<ul>
@@ -28,14 +28,13 @@
 			
 					<div class="AnswersAndAddAnswer">
 								<div class="AnswerList">
-								<p>The list of answers will display here
-			
-								<p>Categories this product is in:</p>
+								
+								<p>Answers</p>
 								<ul>
 			
-									<c:forEach items="${answerThisQuestion}" var="category"> 
+									<c:forEach items="${thisQuestionsAnswers}" var="thisAnswers"> 
 										<li>
-											<c:out value="${answer.answer}"/>
+											a<c:out value="${thisAnswers.answer}"/>
 										</li>
 					        		</c:forEach>
 								</ul>
@@ -46,7 +45,25 @@
 			
 							<div class ="AddAnswer">
 			
-								The form to add another answer will display here
+								<p>Add your answer</p>
+
+								<form:form action="/questions/${question1.id}/answers" method="post" modelAttribute="answerM">
+			
+									<div>
+										<form:label path="answer">Answer</form:label>
+										<form:errors path="answer"/>
+										<form:input path="answer"/>
+									</div>
+
+									
+									<div class="row">
+										<input type="submit" value="Answer It"/>
+									</div>
+								
+
+								</form:form>
+								
+								
 							</div> <!-- End AddAnswer -->
 		
 					</div> <!-- end AnswersAndAddAnswer -->

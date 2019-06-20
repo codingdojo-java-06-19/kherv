@@ -55,7 +55,7 @@ public class CategoryController {
 	
 	// First render product page
 	@RequestMapping("/{id}") // id coming in is of a category...the one whose products will be listed and to which more products can be added
-	public String showCategory(@PathVariable ("id") Long id, @ModelAttribute("productCategory") CategoryProduct categoryProduct, Model model) {
+	public String showCategory(@PathVariable ("id") Long id, @ModelAttribute("productCategory") CategoryProduct categoryProduct , Model model) {
 		Category category1 = categoryService.findOne(id);
 		model.addAttribute("category1",  category1);
 		
