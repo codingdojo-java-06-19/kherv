@@ -7,6 +7,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.events.models.Event;
+import com.codingdojo.events.models.Message;
 import com.codingdojo.events.models.User;
 import com.codingdojo.events.repositories.EventRepository;
 import com.codingdojo.events.repositories.MessageRepository;
@@ -68,13 +69,11 @@ public class ApiService {
   /////////////Event-Related Services/////////////////////////
    
   //Save an event to the database
-    
   public Event createOrUpdateEvent(Event event) {
 	  return eventRepo.save(event);
   }
   
   //Return this users' state
-  
   public String thisUsersState(Long user_id) {
 	  User thisUser = userRepo.findById(user_id).orElse(null); 
 	  return thisUsersState(thisUser);
@@ -94,6 +93,26 @@ public class ApiService {
   public List<Event> eventsNotInYourState(Long user_id){
 	  String myState = thisUsersState(user_id);
 	  return eventRepo.findByStateIsNot(myState);
+  }
+ 
+  //Find one Event by Id
+  public Event findThisEvent(Long eventId) {
+	  Event thisEvent = eventRepo.findById(eventId).orElse(null);
+	  return thisEvent;
+  }
+  
+  ///////////////MESSAGE-RELATED SERVICES///////////////////
+  public Message createMessage(String content, Long authorId, Long eventId) {
+	  Event thisEvent = eventRepo.findById(eventId).orElse(null);
+	  User author = userRepo.findById(authorId).orElse(null);
+	  Message message = new Message(content, author, thisEvent);
+	  return messageRepo.save(message);
+  }
+  
+  //Return all Messages Attached to One Event
+  public List<Message> findMessagesForThisEvent(Long eventId){
+	  Event thisEvent = eventRepo.findById(eventId).orElse(null);
+	  return thisEvent.getMessages();
   }
 
 }

@@ -57,7 +57,7 @@ public class LoginRegController {
 			//...save their user id in session
 			User user = apiService.findByEmail(email);
 			session.setAttribute("userId", user.getId());
-			return "events/showEvents.jsp";
+			return "redirect:/events/";
 		}
 		redirectAttributes.addFlashAttribute("loginError", "Login failed. Please try again.");
 		return "redirect:/";

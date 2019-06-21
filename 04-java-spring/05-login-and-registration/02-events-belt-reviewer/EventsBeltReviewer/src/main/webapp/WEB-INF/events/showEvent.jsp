@@ -11,24 +11,26 @@
 </head>
 	<body>
 		<div class="container">
-			<h1>Soccer Game</h1>
+			<h1>${event.name}</h1>
 			<div class="row">
 				<div class="col">
 					<div class="event-info">
-						<p>Host: Musk Johnson</p>
-						<p>Date: November 30, 2018</p>
-						<p>Location: Phoenix, AZ</p>
-						<p>People who are attending this event: 3</p>
+						<p>Host: ${event.host.getFirstName()}</p>
+						<p>Date: ${event.formatEventDate()}</p>
+						<p>Location: ${event.city}, ${event.state}</p>
+						<p>People who are attending this event: ${event.members.size()}</p>
 					</div>
 					<table class="tablestyle">
 						<tr>
 							<th>Name</th>
 							<th>Location</th>
 						</tr>
+						<c:forEach items="${event.getMembers()}" var="user">
 						<tr>
-							<td>John Doe</td>
-							<td>Burbank</td>
+							<td>${user.getFirstName()} ${user.getLastName()}</td>
+							<td>${user.getCity()}</td>
 						</tr>
+						</c:forEach>
 						<tr>
 							<td></td>
 							<td></td>
@@ -37,17 +39,21 @@
 				</div>
 				<div class="col">
 					<h3>Message Wall</h3>
+					<p class="bad">${messageError}</p>
 					<div class="message-wall">
+						<c:forEach items="${messages}" var="message">
 						<div class="message-group">
-							<p>Ninja says: Hello Everyone this is a really long sentence just so i can see what happens in the message wall box</p>
+							<p>${message.getAuthor()} says: ${message.getContent()}</p>
 							<p>~*~*~*~*~*~*~*~*~**~*~*~</p>
 						</div>
+						</c:forEach>
 					</div>
-					<form action="/" method="POST" autocomplete="off">
+					<form:form action="/events/newMessage/${event.getId()}" method="POST" modelAttribute="message" autocomplete="off">
 						<label for="message">Add Comment:</label>
-						<textarea></textarea>
+						<textarea name="content"></textarea>
+						<input type="hidden" name="author" value="${loggedInUser.getId()}"/>
 						<input type="submit" name="Submit"/>
-					</form>
+					</form:form>
 				</div>
 			</div>
 		</div>

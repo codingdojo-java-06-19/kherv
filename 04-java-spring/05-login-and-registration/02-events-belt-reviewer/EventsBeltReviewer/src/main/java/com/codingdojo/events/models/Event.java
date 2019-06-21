@@ -1,5 +1,6 @@
 package com.codingdojo.events.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -75,6 +76,14 @@ public class Event {
 		inverseJoinColumns = @JoinColumn (name = "user_id") //User has "event_id" here
 		)
 
+	
+	public String formatEventDate() {
+		Date date = this.eventDate;
+		SimpleDateFormat format = new SimpleDateFormat("MMMM d, yyyy");
+		String formattedDate = format.format(date);
+		return formattedDate;
+	}
+	
 	
 	@PrePersist
 	protected void onCreate() {

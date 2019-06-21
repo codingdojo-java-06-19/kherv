@@ -44,7 +44,11 @@ public class Message {
 	public Message() {
 	}
 
-
+	public Message(String content, User author, Event event) {
+		this.author = author;
+		this.event = event;
+		this.content = content;
+	}
 
 	
 	public String getContent() {

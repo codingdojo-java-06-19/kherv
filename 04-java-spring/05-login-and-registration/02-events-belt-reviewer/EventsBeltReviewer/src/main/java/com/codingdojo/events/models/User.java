@@ -39,7 +39,7 @@ public class User {
 	@NotEmpty
 	@Size(min=8)
 	private String password;
-	@Transient
+	//@Transient
 	private String passwordConfirmation;
 	@Column(updatable=false)
 	private Date createdAt;
