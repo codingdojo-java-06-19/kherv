@@ -1,4 +1,4 @@
-package com.codingdojo.events.models;
+package com.codingdojo.authentication.models;
 
 
 
@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users_events") //could be called attenders because this table tracks attenders by name and event
-public class UserEvent {
+public class trashUserEvent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
