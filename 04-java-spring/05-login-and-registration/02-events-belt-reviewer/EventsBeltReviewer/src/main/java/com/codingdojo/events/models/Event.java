@@ -26,7 +26,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="event")
+@Table(name="events")
 public class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,7 +60,7 @@ public class Event {
 	//This many to one User...accounts for many Events planned by just one user/planner
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	private User planner;  //Over in the User table there is @OneToMany(mappedBy="planner", fetch = FetchType.LAZY)
+	private User host;  //Over in the User table there is @OneToMany(mappedBy="planner", fetch = FetchType.LAZY)
 	
 	
  	
@@ -145,12 +145,14 @@ public class Event {
 		this.messages = messages;
 	}
 
-	public User getPlanner() {
-		return planner;
+
+
+	public User getHost() {
+		return host;
 	}
 
-	public void setPlanner(User planner) {
-		this.planner = planner;
+	public void setHost(User host) {
+		this.host = host;
 	}
 
 	@PreUpdate

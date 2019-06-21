@@ -21,7 +21,7 @@ public class Message {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String messageContent;
+	private String content;
 	
 	@Column(updatable=false)
 	private Date createdAt;
@@ -47,6 +47,20 @@ public class Message {
 
 
 	
+	public String getContent() {
+		return content;
+	}
+
+
+
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -61,19 +75,7 @@ public class Message {
 
 
 
-	public String getMessageContent() {
-		return messageContent;
-	}
-
-
-
-
-	public void setMessageContent(String messageContent) {
-		this.messageContent = messageContent;
-	}
-
-
-
+	
 
 	public Date getCreatedAt() {
 		return createdAt;

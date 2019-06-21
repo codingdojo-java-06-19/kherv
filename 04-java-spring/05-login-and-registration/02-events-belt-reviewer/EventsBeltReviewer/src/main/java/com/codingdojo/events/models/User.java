@@ -51,7 +51,7 @@ public class User {
 
 
 	//This one to Event many
-	@OneToMany(mappedBy="planner", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="host", fetch = FetchType.LAZY)
 	private List<Event> eventsPlanned; //this is about the host/planner who is planning events we need to know what events he has planned
 
 	//This one to Messages many  this accounts for many Messages for each user/author
