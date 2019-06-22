@@ -43,7 +43,7 @@
 					<div class="message-wall">
 						<c:forEach items="${messages}" var="message">
 						<div class="message-group">
-							<p>${message.getAuthor()} says: ${message.getContent()}</p>
+							<p>${message.getAuthor().firstName} says: ${message.getContent()}</p>
 							<p>~*~*~*~*~*~*~*~*~**~*~*~</p>
 						</div>
 						</c:forEach>

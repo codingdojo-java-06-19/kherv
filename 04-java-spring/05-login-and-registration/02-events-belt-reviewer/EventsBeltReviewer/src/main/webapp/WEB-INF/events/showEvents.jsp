@@ -26,15 +26,41 @@
 					</tr>
 					<c:forEach items="${eventsInState}" var="event">
 					<tr>
-						<td><a href="/events/${event.getId()}">${event.name}</a></td>
+						<td><a href="/events/${event.getId()}">${event.name}- ${event.getId()}</a></td>
 						<td>${event.formatEventDate()}</td>
 						<td>${event.city}</td>
-						<td>${event.host.getFirstName()}</td>
-						<td><a href="/">Join</a> Joining  <a href="/">Cancel</a></td>
+						<td>${event.host.getFirstName()} - ${event.getHost().getId()}</td>
+								
+						<td>
+						<c:choose>
+							<c:when test="${event.host.id==user.id}">
+								<div class = "col">
+								<a href="/events/${event.getId()}/edit" class="normal-link"  >Edit</a>
+								</div>
+								<div class = "col">
+									<form:form action="/events/delete/${event.getId()}" method="POST">
+										<input class="normal-link" class="xxsubmitlink" type="submit" value="Cancel Event">
+									</form:form>
+								</div>
+							</c:when>						
+							<c:otherwise> <!-- what to do if not logged in is not the host -->
+								<c:choose>
+									<c:when test="${ event.members.contains(user)}"> <!--If already signed up, then they can cancel-->
+									
+									<a href="/events/${event.getId()}/cancel">Cancel attendance</a>
+									</c:when>
+									<c:otherwise><!-- then they have not signed up...so they can join-->
+									<a href="/events/${event.getId()}/join">Join</a>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>					
+						</c:choose>
+						</td>
 					</tr>
 					</c:forEach>
 					<tr>
-						<td></td>
+						<td>
+					</td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -58,7 +84,31 @@
 						<td>${event.formatEventDate()}</td>
 						<td>${event.city}</td>
 						<td>${event.host.getFirstName()}</td>
-						<td><a href="/">Join</a></td>
+						<td>
+						<c:choose>
+							<c:when test="${event.host.id==user.id}">
+								when logged in is host edit/delete
+								<a href="/events/${event.getId()}/edit">Edit</a>
+									<form:form action="/events/delete/${event.getId()}" method="POST">
+										<input class="normal-link" type="submit" value="Cancel Event">
+									</form:form>
+								${event.getHost().getId()}
+							</c:when>						
+							<c:otherwise> <!-- what to do if not logged in is not the host -->
+								<c:choose>
+									<c:when test="${ event.members.contains(user)}"> <!--If already signed up, then they can cancel-->
+									already  signed up 
+									<a href="/events/${event.getId()}/cancel">Cancel attendance</a>
+									</c:when>
+									<c:otherwise><!-- then they have not signed up...so they can join-->
+									<a href="/events/${event.getId()}/join">Join event</a>
+									wanna join?
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>					
+						</c:choose>
+						</td>
+						<td></td>
 					</tr>
 					</c:forEach>
 					<tr>

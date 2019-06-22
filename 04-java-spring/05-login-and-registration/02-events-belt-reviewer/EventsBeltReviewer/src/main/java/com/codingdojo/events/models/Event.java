@@ -75,7 +75,11 @@ public class Event {
 		joinColumns = @JoinColumn ( name = "event_id"), //User has "user_id" here
 		inverseJoinColumns = @JoinColumn (name = "user_id") //User has "event_id" here
 		)
-
+	private List<User> members;
+	
+	public void addMember(User user) {
+		members.add(user);
+	}
 	
 	public String formatEventDate() {
 		Date date = this.eventDate;
@@ -85,6 +89,17 @@ public class Event {
 	}
 	
 	
+	
+	public List<User> getMembers() {
+		return members;
+	}
+
+
+	public void setMembers(List<User> members) {
+		this.members = members;
+	}
+
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

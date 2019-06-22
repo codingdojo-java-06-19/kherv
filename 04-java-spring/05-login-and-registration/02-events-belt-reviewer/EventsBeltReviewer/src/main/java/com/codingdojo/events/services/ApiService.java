@@ -19,6 +19,7 @@ public class ApiService {
 	private final EventRepository eventRepo;
 	private final MessageRepository messageRepo;
 	
+	//ApiService needs these three variables because it manages these repositories...the repository knows how to talk to database
 	public ApiService(UserRepository userRepo, EventRepository eventRepo, MessageRepository messageRepo) {
 		this.userRepo = userRepo;
 		this.eventRepo = eventRepo;
@@ -95,11 +96,37 @@ public class ApiService {
 	  return eventRepo.findByStateIsNot(myState);
   }
  
-  //Find one Event by Id
+  //Find one Event by Id=select * form event database where id=eventId....
   public Event findThisEvent(Long eventId) {
 	  Event thisEvent = eventRepo.findById(eventId).orElse(null);
 	  return thisEvent;
   }
+  
+  //Host cancels event
+  public void deleteThisEvent(Long eventId) {
+	  Event thisEvent = findThisEvent(eventId);
+	  eventRepo.delete(thisEvent);
+  }
+  
+  
+  //Have a member join an event
+  public void joinThisEvent(Long eventId, Long userId) {
+	  Event thisEvent = findThisEvent(eventId);
+	  User thisUser = userRepo.findById(userId).orElse(null);
+	  thisEvent.addMember(thisUser);  //calling addMember on "thisEvent"
+	  eventRepo.save(thisEvent);
+  }
+  
+  //Have someone remove themselves from an event
+  public void removeFromEvent(Long eventId, Long userId) {
+	  Event thisEvent = findThisEvent(eventId);
+	  User thisUser = userRepo.findById(userId).orElse(null);
+	  thisEvent.getMembers().remove(thisUser);
+	  eventRepo.save(thisEvent);
+  }
+  
+  
+  
   
   ///////////////MESSAGE-RELATED SERVICES///////////////////
   public Message createMessage(String content, Long authorId, Long eventId) {
@@ -115,4 +142,10 @@ public class ApiService {
 	  return thisEvent.getMessages();
   }
 
+  //------
+  //Get user for an event
+  
+  
+  
+  
 }

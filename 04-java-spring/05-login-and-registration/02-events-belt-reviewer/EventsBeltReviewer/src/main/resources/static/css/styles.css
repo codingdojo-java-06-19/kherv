@@ -11,7 +11,8 @@
 }
 
 a{
-	color:blue;
+  color:blue;
+  display: inline-block;
 }
 
 .bad{
@@ -49,7 +50,7 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+xxinput[type=submit] {
 	margin-top:10px;
   padding: 12px 20px;
   border: 2px solid black;
@@ -167,4 +168,45 @@ fieldset{
 
 h3{
 	margin-top:30px;
+}
+
+
+/* <p><button type="submit" class="link"><span>Hello there I am a button</span></button></p> */
+/* turns button into link per https://blog.natbat.net/post/46614475051/styling-buttons-as-links */
+xxbutton.link {
+	font-family: "Verdana" sans-serif;
+	font-size: 1em;
+	text-align: left;
+	color: blue;
+	background: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+
+xx.submitlink {
+	font-family: "Verdana" sans-serif;
+	font-size: 1em;
+	text-align: left;
+	color: blue;
+	background: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+
+.normal-link{
+	color:blue;
+	border:none;
+	text-decoration:underline;
+	font-size:1em;
+	display:inline-block;
+}
+
+.col {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
 }
