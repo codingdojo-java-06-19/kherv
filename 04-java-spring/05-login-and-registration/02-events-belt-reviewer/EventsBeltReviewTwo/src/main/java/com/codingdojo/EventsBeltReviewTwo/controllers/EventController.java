@@ -179,7 +179,14 @@ public class EventController {
 		return "redirect:/events/";
 	}
 	
-	
+	// comes here from a link in table of index or show events page and allows
+	// logged in person to join event
+	@RequestMapping("/{id}/cancel")
+	public String cancelAttendance(@PathVariable("id") Long eventId, HttpSession session) {
+		Long userId = (Long) session.getAttribute("userId");
+		apiService.removeFromEvent(eventId, userId);
+		return "redirect:/events/";
+	}
 	
 	
 	
