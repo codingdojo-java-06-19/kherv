@@ -3,6 +3,7 @@ package com.codingdojo.events.validator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
 import com.codingdojo.events.models.User;
 
 @Component
