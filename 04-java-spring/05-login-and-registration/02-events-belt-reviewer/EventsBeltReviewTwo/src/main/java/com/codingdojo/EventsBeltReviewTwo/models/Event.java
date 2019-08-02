@@ -29,7 +29,7 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Future
-	@DateTimeFormat(pattern ="yyyy=MM=dd")
+	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date eventDate;
 	@NotEmpty
 	private String name;

@@ -8,6 +8,12 @@
 .container{
 	width:80%;
 	margin:30px auto 30px auto;
+	background-color:pink;
+}
+
+.tinyText { 
+	font-size: 4px;
+
 }
 
 a{
@@ -45,6 +51,23 @@ select{
   	resize: vertical;
 }
 
+.leftSide, .rightSide{
+	display:inline-block;
+	width: 45%;
+	vertical-align: top;
+	margin: 20px;
+	background-color: lightblue;
+}
+
+.messages{
+	border: solid black;
+	min-height: 10px;
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
@@ -77,7 +100,7 @@ input[type=submit]:hover {
 }
 
 .col-20 {
-  float: left
+  float: left;
   width: 20%;
   margin-top: 6px;
 }
@@ -100,7 +123,7 @@ fieldset{
 .col-40{
 	float:left;
 	width:40%;
-	margin-top:40px;
+	margin-top:6px;
 }
 
 .col-75 {
@@ -154,20 +177,23 @@ fieldset{
 	margin: 30px 0px 30px 0px;
 }
 
-.message-wall{
-	padding:10px;
-	margin:30px 0px 30px 0px;
-	border:2px solid black;
-	height:200px;
-	overflow:scroll;
-}
 
 .message-wall p{
 	margin-bottom:10px;
 }
 
+
+.message-box{
+	border: solid black;
+	min-height: 40px;
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+
 h3{
 	margin-top:30px;
+	margin-bottom:30px;
 }
 
 
@@ -209,4 +235,9 @@ xx.submitlink {
   float: left;
   width: 50%;
   margin-top: 6px;
+}
+
+p {
+
+
 }

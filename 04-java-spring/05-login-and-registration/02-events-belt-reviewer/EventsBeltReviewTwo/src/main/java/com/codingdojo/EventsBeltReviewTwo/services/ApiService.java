@@ -110,8 +110,9 @@ public class ApiService {
 	//member joins event
 	  public void joinThisEvent(Long eventId, Long userId) {
 		  Event thisEvent = findThisEvent(eventId);
-		  User thisUser = userRepo.findById(eventId).orElse(null);
+		  User thisUser = userRepo.findById(userId).orElse(null);
 		  thisEvent.addMember(thisUser); //calling addMember on "thisEvent"
+		  System.out.println("inside joinThisEvent userId is " + thisUser.getId() + " and eventId is " + thisEvent.getId());
 		  eventRepo.save(thisEvent);
 	  }
 	
