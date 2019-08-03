@@ -56,7 +56,7 @@
 												<input type="hidden" name="_method" value="delete">
 												<input class="normal-link" type="submit" value="Cancel attendance">
 											</form:form>
-s
+
 										</c:when>
 										<c:otherwise>
 											<form:form action="/events/${event.getId()}/users" method="POST">

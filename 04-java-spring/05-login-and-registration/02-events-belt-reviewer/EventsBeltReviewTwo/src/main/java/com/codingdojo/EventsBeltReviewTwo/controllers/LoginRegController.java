@@ -40,12 +40,16 @@ public class LoginRegController {
 			return "redirect:/";
 		}
 		try { 
-			User newUser = apiService.registrationUser(user);
+			//First, we'll try to register a new user. If the email credentials are not duplicates, then we'll be prompted to login.
+			apiService.registrationUser(user);
 			//redirectAttributes.addFlashAttribute("preLoginMessage", "try again");
+			session.setAttribute("userId", user.getId());
+			redirectAttributes.addFlashAttribute("preLoginMessage", "Registration successful! Please log in with your new credentials.");
 			return "redirect:/";
 		}
 		catch(Exception exception) {
-			redirectAttributes.addFlashAttribute("registrationError", "try again");
+			//If we already have a matching email address in our system, then we will generate flash messages and prompt the user to go back to the registration page.
+			redirectAttributes.addFlashAttribute("registrationError", "Duplicate Credentials. Please try again with a different email address or log in with your existing account.");
 			return "redirect:/";
 		}
 	}
