@@ -45,6 +45,10 @@ public class User {
 	private Date createdAt;
 	private Date updatedAt;
 	
+	public User() {
+		
+	}
+	
 	//this table, users, has three connections to other tables handled below
 	
 	//This one to Event many

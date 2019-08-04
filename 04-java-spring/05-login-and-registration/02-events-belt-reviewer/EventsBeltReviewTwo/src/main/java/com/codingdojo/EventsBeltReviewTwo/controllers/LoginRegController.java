@@ -13,16 +13,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.codingdojo.EventsBeltReviewTwo.models.User;
 import com.codingdojo.EventsBeltReviewTwo.services.ApiService;
+import com.codingdojo.EventsBeltReviewTwo.services.UserService;
 import com.codingdojo.EventsBeltReviewTwo.validator.UserValidator;
 
 @Controller
 public class LoginRegController {
 	private final ApiService apiService;
 	private final UserValidator userValidator;
+	private final UserService userService;
 	
-	public LoginRegController(ApiService apiService, UserValidator userValidator) {
+	public LoginRegController(UserService userService, ApiService apiService, UserValidator userValidator) {
 		this.apiService = apiService;
 		this.userValidator = userValidator;
+		this.userService = userService;
 	}
 	
 	@RequestMapping("/")
@@ -30,7 +33,7 @@ public class LoginRegController {
 		return "loginReg.jsp";
 	}
 	
-	
+	//registration form points here
 	@PostMapping("/register")
 	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, RedirectAttributes redirectAttributes) {
 		System.out.println("here");
@@ -41,6 +44,19 @@ public class LoginRegController {
 		}
 		try { 
 			//First, we'll try to register a new user. If the email credentials are not duplicates, then we'll be prompted to login.
+			
+			//begin added 8/3/19 to fix duplicate email check
+			if (!(apiService.isEmailAlreadyRegisered(user))) {
+				System.out.println("not existing email");
+			}
+			else {
+				System.out.println("email was existing");
+				throw new Exception ("duplicate email thrown");
+			}
+			//end added 8/3/19 to fix duplicate email check
+			
+			
+			
 			apiService.registrationUser(user);
 			//redirectAttributes.addFlashAttribute("preLoginMessage", "try again");
 			session.setAttribute("userId", user.getId());

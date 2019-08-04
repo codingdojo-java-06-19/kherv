@@ -26,6 +26,39 @@ public class ApiService {
 		this.messageRepo = messageRepo;
 	}
 	
+	/////  Begin outside of project scope...learning purposes only..well, then implemented some...8/3/19
+	// getting a list of all users...wanting list of all users and their email addresses
+	//using list of all courses as a model
+	
+	public List<User> allUsers(){
+		return userRepo.findAll();
+	}
+	
+	public User findById(long userId) {
+		return userRepo.findById(userId).orElse(null);
+	}
+	
+	public boolean isEmailAlreadyRegisered(User user) {
+		List<User> users = this.allUsers();	
+		for (User theUser : users) {
+			System.out.println("All users as found in isEmailAlreadyRegistered:  " + theUser.getId()+ "," + theUser.getEmail());
+			if (user.getEmail().equals(theUser.getEmail())) {
+				System.out.println("we have a match with " + theUser.getId()+ "," + theUser.getEmail());
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//// End outside project scope....learning purposes only
+	
+	
+	
+	
+	
+	
+	
+	
 	//// Register
 	public User registrationUser(User user) {
 		String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
