@@ -113,3 +113,12 @@ hs_err_pid*
 # VS git tools doesn't work for true out of tree builds and it's
 # useful to be able to work on multiple configs
 /build*/
+
+#ignore java binaries
+# Ignore files with extension .class 
+*.class
+# Ignore bin dir
+bin/
+# or
+/bin/
+
